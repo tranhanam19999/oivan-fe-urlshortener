@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node env.js && ng serve",
+    "start": "WDS_DISABLE_HOST_CHECK=true node env.js && ng serve --host 0.0.0.0",
     "build": "node env.js && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

@@ -59,6 +59,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "allowedHosts": ["localhost", "social-cameras-spend.loca.lt"]
+          },
           "configurations": {
             "production": {
               "buildTarget": "url-shortener-ui:build:production"

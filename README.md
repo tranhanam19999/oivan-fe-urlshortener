@@ -1,59 +1,48 @@
 # UrlShortenerUi
 
+## Author: Tran Ha Nam
+
+Since this can't be paginated so you can copy the content's name to go to it's section
+
+## Table of contents
+
+### 1. Overview
+
+### 2. Problem
+
+### 3. Solutions
+
+### 4. Final thoughts
+
+##
+
+## 1. Overview
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.10.
+So that we can save time doing other things <br>
+You can view Instruc.MD as instruction for setting up this to run at locally
 
-## Development server
+## 2. Problem
 
-To start a local development server, run:
+Building the UI and stuff is easy, but one weird thing is that I just now that Angular can't load directly env from .env file tho? How come, maybe I was low-tech so I did some researches <br>
 
-```bash
-ng serve
-```
+Angular will needs to load env throughs a customize .js file which will uses the dotenv to load it and then import that as a package. Or I am wrong haha<br>
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Main things to solve is just build 2 panels, one panel for encode and the other for decoding <br>
+Then the UI should display the url <br>
 
-## Code scaffolding
+The other problem is that if I deploy this source code, I would have to write some kind of proxy that will redirect the request with prefix let's say https://fe.com/r/somecode -> http://ec2ip/r/somecode or https://myserver.com/r/somecode <br>
+And the Angular already have the configuration for it so it should really straight forward tho.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 3. Solutions
 
-```bash
-ng generate component component-name
-```
+So I've built 2 panels, with simple URL validation and then show the results or error if needed <br>
+Since I don't have much time left, I planned to use both as in http method since the ec2 is already in http://it's.ip the only thing left is just the UI code to be in http, which is weird right since people always use https, I know I know. And for that to happen, I use the "lt" package (ngrok alternatives) to host my FE code. <br>
+I know for a fact that I should have buy 3 domains, one for the shorten url, one for the backend services and the last one for the front-end <br>
+So the logic would be that if the user request from the FE, than the FE would make the requests into the backend service, the backend service would then encode the url into a code, attach that code with the shorten url's domain. <br>
+Then in the shorten url's domain, we can write proxy configuration, re-routes request into the backend. There it will de-tach the code, and then get the original url -> redirection appear. <br> 
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 4. Final thoughts
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Not much since AI did pretty much all the work building the UI, what do you expect from a first-timer Angular kkk <br>
+But I got experience a lot with deploying stuff to https through buying domains and tweaks
