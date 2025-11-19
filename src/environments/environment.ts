@@ -1,4 +1,6 @@
+import { environment as config } from '../environments/config';
+
 export const environment = {
   production: false,
-  apiBase: 'http://3.106.60.63'
+  apiBase: config.apiBase
 };
